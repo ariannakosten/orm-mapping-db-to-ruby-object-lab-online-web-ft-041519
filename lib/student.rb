@@ -64,7 +64,7 @@ sql = <<-SQL
   end
   
   def self.first_X_students_in_grade_10
-     sql = "SELECT * FROM students WHERE grade = ?"
+      sql = "SELECT * FROM students WHERE grade = 10 LIMIT ?" #question mark after limit
     DB[:conn].execute(sql, x)
   end
   
