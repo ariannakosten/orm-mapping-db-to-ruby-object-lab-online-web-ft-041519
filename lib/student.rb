@@ -12,7 +12,6 @@ class Student
 
   def self.all
     # retrieve all the rows from the "Students" database
-    # remember 
     
      sql = <<-SQL
       SELECT *
@@ -20,7 +19,9 @@ class Student
     SQL
  
     DB[:conn].execute(sql).map do |row|
-      self.new_from_db(row) #
+      self.new_from_db(row)
+      
+      #each row should be a new instance of the Student class
     end
   end
 
@@ -32,9 +33,10 @@ class Student
       SELECT *
       FROM students
       WHERE name = ?
+      LIMIT 1
     SQL
  
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql, name)
   end
   end
   
